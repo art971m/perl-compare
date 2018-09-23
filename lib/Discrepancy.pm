@@ -1,7 +1,6 @@
 package Discrepancy;
 use Class::XSAccessor {
     accessors => [
-        'attr_name',
         'missing',
         'unexpected',
     ],

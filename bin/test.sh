@@ -7,4 +7,8 @@ T_DIRECTORY=$(cd ${SCRIPT_DIRECTORY}/../t; pwd -P)
 PERL5LIB=${LIB_DIRECTORY}
 export PERL5LIB
 
-/usr/bin/env prove --color --verbose  ${T_DIRECTORY}/*
+if [ ${EUID} -eq 0 ]; then
+    su -c "/usr/bin/env prove --color --verbose  ${T_DIRECTORY}/*" -s /bin/bash art
+else
+    /usr/bin/env prove --color --verbose  ${T_DIRECTORY}/*
+fi
